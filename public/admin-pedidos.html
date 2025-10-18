@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Panel de Pedidos — Suspiro Admin</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+main { padding: 30px; max-width: 1100px; margin: auto; }
+h1 { color: var(--chocolate); margin-bottom: 20px; }
+.table { width:100%; border-collapse: collapse; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 30px rgba(0,0,0,0.05); }
+.table th, .table td { padding: 14px 10px; border-bottom: 1px solid #eee; text-align:left; vertical-align: top; }
+.table th { background: #fdf3f5; color: var(--chocolate); }
+.badge { padding: 4px 10px; border-radius: 10px; font-size: 0.85rem; }
+.badge.pendiente { background: #f7c1cc; color: #8b0000; }
+.badge.entregado { background: #c2f7c1; color: #006b00; }
+button.action { background: var(--accent); color:#fff; border:none; padding:6px 12px; border-radius:8px; cursor:pointer; margin-right:6px; transition:.2s; }
+button.action:hover { opacity: 0.85; }
+#buscador { width:100%; padding:10px; border-radius:10px; border:1px solid #eee; margin-bottom:15px; }
+.resumen { background:#f9f9f9; border-radius:10px; padding:10px; font-size:0.9rem; margin-top:6px; }
+.small { color:#777; font-size:0.85rem; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">🍓 <span>Suspiro Admin</span></div>
+  <nav class="nav">
+    <a href="admin.html">Testimonios</a>
+    <a href="admin-pedidos.html" class="active">Pedidos</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Pedidos recibidos</h1>
+  <input id="buscador" placeholder="🔍 Buscar por nombre, teléfono o estado...">
+
+  <table class="table" id="tablaPedidos">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Detalles</th>
+        <th>Total</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</main>
+
+<script src="admin-pedidos.js"></script>
+</body>
+</html>

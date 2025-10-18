@@ -1,0 +1,76 @@
+<!-- ===== Sección de Reseñas ===== -->
+<div id="reseñasSection" style="max-width: 900px; margin: 50px auto; padding: 40px; background: rgba(255, 240, 245, 0.95); border-radius: 25px; box-shadow: 0 12px 35px rgba(0,0,0,0.15); color:#333; position:relative; overflow:hidden;">
+
+  <h2 style="text-align:center; font-size:2rem; color:#ff6f91; margin-bottom:30px;">💬 Reseñas de nuestros clientes</h2>
+
+  <!-- Formulario -->
+  <div id="formReseña" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">
+    <input type="text" id="nombreReseña" placeholder="Tu nombre" style="padding:12px; border-radius:12px; border:1px solid #ffb6c1; font-size:1rem;">
+    <textarea id="comentarioReseña" placeholder="Tu comentario" style="padding:12px; border-radius:12px; border:1px solid #ffb6c1; font-size:1rem;"></textarea>
+    <button id="enviarReseña" style="padding:14px; border-radius:14px; background:#ff6f91; color:#fff; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s;">Enviar Reseña</button>
+    <p id="mensajeReseña" style="text-align:center; margin-top:5px; color:#ff3b6f;"></p>
+  </div>
+
+  <!-- Lista de reseñas -->
+  <div id="reseñasList" style="display:flex; flex-direction:column; gap:20px;"></div>
+
+</div>
+
+<style>
+/* Animación entrada reseñas */
+.reseña-card {
+  background: #fff0f5;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s;
+}
+.reseña-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reseña-card h4 {
+  color: #ff6f91;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+.reseña-card p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Hover botón enviar */
+#enviarReseña:hover {
+  background:#ff3b6f;
+  transform: scale(1.05);
+}
+</style>
+
+<script>
+// Enviar reseña (simulación)
+document.getElementById('enviarReseña').onclick = () => {
+  const nombre = document.getElementById('nombreReseña').value.trim();
+  const comentario = document.getElementById('comentarioReseña').value.trim();
+  const mensaje = document.getElementById('mensajeReseña');
+  if(!nombre || !comentario){
+    mensaje.textContent = 'Por favor completa todos los campos';
+    return;
+  }
+
+  // Crear card de reseña
+  const div = document.createElement('div');
+  div.className = 'reseña-card';
+  div.innerHTML = `<h4>${nombre}</h4><p>${comentario}</p>`;
+  document.getElementById('reseñasList').prepend(div);
+
+  setTimeout(()=> div.classList.add('visible'), 50);
+
+  // Limpiar formulario
+  document.getElementById('nombreReseña').value = '';
+  document.getElementById('comentarioReseña').value = '';
+  mensaje.textContent = '';
+};
+</script>
